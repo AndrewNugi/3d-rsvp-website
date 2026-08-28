@@ -44,7 +44,7 @@ export async function GET() {
       <Page size="A4" style={styles.page}>
         <Text style={styles.title}>RSVP List</Text>
         <Text style={styles.subtitle}>
-          {attendingCount} attending · {notAttendingCount} not attending · {rsvps.length} total
+          {attendingCount} Attending · {notAttendingCount} Not Attending · {rsvps.length} Total
         </Text>
         <View style={styles.table}>
           <View style={styles.headerRow}>
