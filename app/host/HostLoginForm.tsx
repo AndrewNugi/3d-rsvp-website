@@ -2,6 +2,7 @@
 
 import { useRouter } from "next/navigation";
 import { useState, type FormEvent } from "react";
+import { markHostSessionActive } from "./HostSessionGuard";
 
 export default function HostLoginForm() {
   const router = useRouter();
@@ -26,6 +27,10 @@ export default function HostLoginForm() {
         setSubmitting(false);
         return;
       }
+
+      // Marks this tab as having logged in, so HostSessionGuard doesn't
+      // immediately log it back out on the very render this produces.
+      markHostSessionActive();
 
       // Re-renders the server component with the now-valid session cookie.
       router.refresh();

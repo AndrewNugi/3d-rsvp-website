@@ -1,7 +1,7 @@
 import { createHash, createHmac, timingSafeEqual } from "crypto";
 
 export const HOST_SESSION_COOKIE = "host_session";
-const SESSION_TTL_SECONDS = 60 * 60 * 12; // 12 hours
+const SESSION_TTL_SECONDS = 60 * 60 * 2; // 2 hours
 
 function getPassword(): string {
   const password = process.env.HOST_PASSWORD;
@@ -56,5 +56,3 @@ export function verifySessionToken(token: string | undefined | null): boolean {
   const expires = Number(payload);
   return Number.isFinite(expires) && Date.now() <= expires;
 }
-
-export const HOST_SESSION_MAX_AGE = SESSION_TTL_SECONDS;

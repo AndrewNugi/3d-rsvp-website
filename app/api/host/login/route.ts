@@ -2,7 +2,6 @@ import { NextResponse } from "next/server";
 import {
   createSessionToken,
   HOST_SESSION_COOKIE,
-  HOST_SESSION_MAX_AGE,
   verifyPassword,
 } from "@/lib/hostAuth";
 
@@ -21,12 +20,14 @@ export async function POST(request: Request) {
     }
 
     const response = NextResponse.json({ ok: true });
+    // No maxAge/expires — a session cookie, so it's cleared when the
+    // browser session ends and the password is required again next visit.
+    // The signed token still carries its own server-side expiry as a cap.
     response.cookies.set(HOST_SESSION_COOKIE, createSessionToken(), {
       httpOnly: true,
       secure: process.env.NODE_ENV === "production",
       sameSite: "lax",
       path: "/",
-      maxAge: HOST_SESSION_MAX_AGE,
     });
     return response;
   } catch {

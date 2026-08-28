@@ -68,7 +68,7 @@ export async function GET() {
   );
 
   const buffer = await renderToBuffer(doc);
-  const filename = `rsvps-${new Date().toISOString().slice(0, 10)}.pdf`;
+  const filename = `rsvp-list-${new Date().toISOString().slice(0, 10)}.pdf`;
 
   return new NextResponse(new Blob([Uint8Array.from(buffer)], { type: "application/pdf" }), {
     status: 200,
