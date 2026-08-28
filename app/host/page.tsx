@@ -2,6 +2,7 @@ import { cookies } from "next/headers";
 import { getAllRsvps } from "@/lib/db";
 import { HOST_SESSION_COOKIE, verifySessionToken } from "@/lib/hostAuth";
 import HostLoginForm from "./HostLoginForm";
+import DeleteRsvpButton from "./DeleteRsvpButton";
 
 // Never statically cache this page — it gates on a cookie and shows live data.
 export const dynamic = "force-dynamic";
@@ -57,6 +58,7 @@ export default async function HostPage() {
               <th>Name</th>
               <th>Attending</th>
               <th>Submitted</th>
+              <th></th>
             </tr>
           </thead>
           <tbody>
@@ -69,11 +71,14 @@ export default async function HostPage() {
                   </span>
                 </td>
                 <td>{new Date(r.created_at).toLocaleString()}</td>
+                <td>
+                  <DeleteRsvpButton id={r.id} name={r.name} />
+                </td>
               </tr>
             ))}
             {rsvps.length === 0 && (
               <tr>
-                <td colSpan={3} className="host-empty">
+                <td colSpan={4} className="host-empty">
                   No RSVPs yet.
                 </td>
               </tr>

@@ -49,3 +49,8 @@ export async function getAllRsvps(): Promise<Rsvp[]> {
   `;
   return rows as Rsvp[];
 }
+
+export async function deleteRsvp(id: number): Promise<void> {
+  const sql = getSql();
+  await sql`DELETE FROM rsvps WHERE id = ${id}`;
+}
