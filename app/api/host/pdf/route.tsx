@@ -50,15 +50,11 @@ export async function GET() {
           <View style={styles.headerRow}>
             <Text style={[styles.headerCell, styles.cellName]}>Name</Text>
             <Text style={[styles.headerCell, styles.cellAttending]}>Attending</Text>
-            <Text style={[styles.headerCell, styles.cellDate]}>Submitted</Text>
           </View>
           {rsvps.map((r) => (
             <View style={styles.row} key={r.id}>
               <Text style={[styles.cell, styles.cellName]}>{r.name}</Text>
               <Text style={[styles.cell, styles.cellAttending]}>{r.attending ? "Yes" : "No"}</Text>
-              <Text style={[styles.cell, styles.cellDate]}>
-                {new Date(r.created_at).toLocaleString()}
-              </Text>
             </View>
           ))}
           {rsvps.length === 0 && <Text style={styles.empty}>No RSVPs yet.</Text>}
