@@ -37,7 +37,7 @@ export default async function HostPage() {
           <div>
             <h1 className="host-heading">RSVPs</h1>
             <p className="host-subheading">
-              {attendingCount} attending · {notAttendingCount} not attending · {rsvps.length} total
+              {attendingCount} Attending · {notAttendingCount} Not Attending · {rsvps.length} Total
             </p>
           </div>
           <div className="host-actions">
@@ -64,14 +64,14 @@ export default async function HostPage() {
           <tbody>
             {rsvps.map((r) => (
               <tr key={r.id}>
-                <td>{r.name}</td>
-                <td>
+                <td data-label="Name">{r.name}</td>
+                <td data-label="Attending">
                   <span className={`host-status${r.attending ? " yes" : " no"}`}>
                     {r.attending ? "Yes" : "No"}
                   </span>
                 </td>
-                <td>{new Date(r.created_at).toLocaleString()}</td>
-                <td>
+                <td data-label="Submitted">{new Date(r.created_at).toLocaleString()}</td>
+                <td className="host-table-actions">
                   <DeleteRsvpButton id={r.id} name={r.name} />
                 </td>
               </tr>
