@@ -247,9 +247,9 @@ export default function Page() {
       <section className="collage-and-card-section" ref={invitationSectionRef}>
         <div className="centered">
           <TiltCard
-            shadowUrl="https://i.ibb.co/bMWqX7f3/2-B966-C61-D91-A-4-D5-A-BFB5-66571497-FE23.jpg"
-            backgroundUrl="https://i.ibb.co/xKyb6NPq/IMG-7819.jpg"
-            cutoutUrl="https://i.ibb.co/zWxs819Q/IMG-1777.png"
+            shadowUrl="/photos/2B966C61-D91A-4D5A-BFB5-66571497FE23.jpg"
+            backgroundUrl="/photos/IMG_7819.JPG"
+            cutoutUrl="/photos/IMG_1777.png"
             borderClass="border-right-behind"
             title="You're Invited"
             text="We would love for you to come and join us in celebrating Makena's Graduation"
