@@ -2,7 +2,7 @@ import { cookies } from "next/headers";
 import { getAllRsvps } from "@/lib/db";
 import { HOST_SESSION_COOKIE, verifySessionToken } from "@/lib/hostAuth";
 import HostLoginForm from "./HostLoginForm";
-import DeleteRsvpButton from "./DeleteRsvpButton";
+import HostRsvpTable from "./HostRsvpTable";
 
 // Never statically cache this page — it gates on a cookie and shows live data.
 export const dynamic = "force-dynamic";
@@ -52,39 +52,7 @@ export default async function HostPage() {
           </div>
         </div>
 
-        <table className="host-table">
-          <thead>
-            <tr>
-              <th>Name</th>
-              <th>Attending</th>
-              <th>Submitted</th>
-              <th></th>
-            </tr>
-          </thead>
-          <tbody>
-            {rsvps.map((r) => (
-              <tr key={r.id}>
-                <td data-label="Name">{r.name}</td>
-                <td data-label="Attending">
-                  <span className={`host-status${r.attending ? " yes" : " no"}`}>
-                    {r.attending ? "Yes" : "No"}
-                  </span>
-                </td>
-                <td data-label="Submitted">{new Date(r.created_at).toLocaleString()}</td>
-                <td className="host-table-actions">
-                  <DeleteRsvpButton id={r.id} name={r.name} />
-                </td>
-              </tr>
-            ))}
-            {rsvps.length === 0 && (
-              <tr>
-                <td colSpan={4} className="host-empty">
-                  No RSVPs yet.
-                </td>
-              </tr>
-            )}
-          </tbody>
-        </table>
+        <HostRsvpTable rsvps={rsvps} />
       </div>
     </main>
   );

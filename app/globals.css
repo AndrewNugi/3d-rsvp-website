@@ -965,6 +965,48 @@ section {
   border-color: rgba(211, 72, 110, 0.4);
 }
 
+.host-search {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  margin-bottom: 1.25rem;
+  padding: 0.7rem 1rem;
+  border-radius: 999px;
+  border: 1.5px solid rgba(211, 72, 110, 0.22);
+  background: #fffaf8;
+  transition: border-color 0.25s ease, box-shadow 0.25s ease;
+}
+
+.host-search:focus-within {
+  border-color: #d3486e;
+  box-shadow: 0 0 0 3px rgba(211, 72, 110, 0.15);
+}
+
+.host-search-icon {
+  font-size: 1.1rem;
+  color: #a3324f;
+  line-height: 1;
+}
+
+.host-search input {
+  flex: 1;
+  min-width: 0;
+  font-family: inherit;
+  font-size: 0.95rem;
+  border: none;
+  outline: none;
+  background: none;
+  color: #4a2a33;
+}
+
+.host-search input::placeholder {
+  color: #b08a91;
+}
+
+.host-search input[type="search"]::-webkit-search-cancel-button {
+  -webkit-appearance: none;
+}
+
 .host-table {
   width: 100%;
   border-collapse: collapse;
@@ -1167,7 +1209,7 @@ section {
 .host-login-submit {
   font-family: inherit;
   font-size: 1rem;
-  font-weight: 700;
+  font-weight: 400;
   letter-spacing: 0.03em;
   padding: 0.9rem 1rem;
   border-radius: 999px;

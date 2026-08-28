@@ -121,10 +121,10 @@ function TiltCard({
 }
 
 export default function Page() {
-  const [isSpinning, setIsSpinning] = useState(false);
   const [isOpen, setIsOpen] = useState(false);
   const [angle, setAngle] = useState(0);
   const rafRef = useRef<number | null>(null);
+  const isSpinning = !isOpen;
 
   useEffect(() => {
     if (isSpinning) {
@@ -150,7 +150,6 @@ export default function Page() {
   }, [isSpinning]);
 
   const handleClick = () => {
-    setIsSpinning((prev) => !prev); // TEMP: spin disabled for photocard editing — re-enable when done
     setIsOpen((prev) => !prev);
   };
 
